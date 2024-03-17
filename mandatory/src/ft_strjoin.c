@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_joine.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 23:16:34 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/16 13:55:51 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/16 13:33:59 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/16 13:34:25 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-int	ft_strlen(char *s)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int	i;
+	char	*ptr;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (s[i])
+	j = 0;
+	ptr = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
+	if (!ptr)
+		return (NULL);
+	while (s1[i])
+	{
+		ptr[i] = s1[i];
 		i++;
-	return (i);
+	}
+	while (s2[j])
+	{
+		ptr[i] = s2[j];
+		i++;
+		j++;
+	}
+	return (ptr);
 }
+

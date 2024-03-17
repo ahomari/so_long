@@ -13,13 +13,14 @@ HEAD					= include/so_long.h
 # F_BONUS_OBJ				= ${SRC_FUNC_B:.c=.o}
 
 SRC_FUNC				= mandatory/ft_printf/ft_printf.c mandatory/ft_printf/utils.c mandatory/gnl/ft_strjoinn.c mandatory/gnl/get_next_line.c mandatory/src/ft_strchr.c mandatory/src/ft_strcpy.c mandatory/src/ft_strdup.c mandatory/src/ft_strlen.c \
-							mandatory/src/ft_calloc.c mandatory/src/msg_error.c mandatory/src/ft_strcmp.c mandatory/src/flood_fill.c
+							mandatory/src/ft_calloc.c mandatory/src/msg_error.c mandatory/src/ft_strcmp.c mandatory/src/flood_fill.c mandatory/src/ft_strjoin.c mandatory/src/ft_split.c mandatory/src/ft_substr.c mandatory/src/ft_free.c \
+							
 F_OBJ					= ${SRC_FUNC:.c=.o}
 
 # SRC_BUNUS				= bonus/checker_bonus.c bonus/msg_error_bonus.c bonus/operations_ab_bonus.c bonus/operations_bonus.c bonus/get_checker_bonus.c bonus/main_bonus.c
 # S_BONUS_OBJ				= ${SRC_BUNUS:.c=.o}
 
-SRC_MAN					= mandatory/main.c
+SRC_MAN					= mandatory/main.c mandatory/utilis.c mandatory/key_hook.c
 S_OBJ					= ${SRC_MAN:.c=.o}
 
 # %bonus.o: %bonus.c		${HEAD_BONUS}
@@ -30,7 +31,7 @@ S_OBJ					= ${SRC_MAN:.c=.o}
 
 
 ${NAME}:				${F_OBJ} ${S_OBJ} include/so_long.h
-						@${CC} ${F_OBJ} ${S_OBJ} -lmlx -framework OpenGL -framework AppKit -o ${NAME} -fsanitize=address
+						@${CC} ${F_OBJ} ${S_OBJ} -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 						@echo "${GREEN}${NAME} Created!${DEFAULT}"
 
 # bonus  :				${F_BONUS_OBJ} ${S_BONUS_OBJ}

@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 23:16:34 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/16 13:55:51 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/16 13:44:36 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/16 13:56:22 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-int	ft_strlen(char *s)
+char	*ft_substr(char *s, int start, int len)
 {
-	int	i;
+	char	*ptr;
+	int		i;
 
 	i = 0;
-	while (s[i])
+	if (!s)
+		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (start + len > ft_strlen(s))
+		len = ft_strlen(s) - start;
+	ptr = ft_calloc(len + 1, sizeof(char));
+	if (!ptr)
+		return (NULL);
+	while (i < len)
+	{
+		ptr[i] = s[start];
 		i++;
-	return (i);
+		start++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

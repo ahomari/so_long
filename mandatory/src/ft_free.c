@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 23:16:34 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/16 13:55:51 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/17 14:48:38 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/17 14:49:33 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-int	ft_strlen(char *s)
+void	*ft_free(char **strs)
 {
 	int	i;
 
 	i = 0;
-	while (s[i])
+	while (strs[i])
+	{
+		free(strs[i]);
 		i++;
-	return (i);
+	}
+	free(strs);
+	return (NULL);
 }
