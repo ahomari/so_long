@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_strchr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 14:48:38 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/19 13:39:45 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/13 23:12:05 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/25 02:22:42 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/so_long_bonus.h"
 
-void	*ft_free(char **strs)
+int	ft_strchr(char *s, char c)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (strs[i])
+	while (s[i])
 	{
-		free(strs[i]);
+		if (s[i] == c)
+			return (1);
 		i++;
 	}
-	free(strs);
-	return (NULL);
+	if (s[i] == c)
+		return (1);
+	return (0);
 }

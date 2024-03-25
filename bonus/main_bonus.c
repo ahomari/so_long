@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:32:30 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/25 13:24:39 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/25 02:23:29 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../include/so_long_bonus.h"
 
 int return_size(char **env)
 {
@@ -40,7 +40,6 @@ void	parsing(t_list *data, char *file)
 	int		count_C;
 	int		count_E;
 	int		count_P;
-	int		count_I
 	
 	ptr = read_map(data, file);
 	if (!ptr)

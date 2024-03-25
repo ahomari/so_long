@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   msg_error_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 14:48:38 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/19 13:39:45 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/14 10:23:21 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/25 02:23:10 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/so_long_bonus.h"
 
-void	*ft_free(char **strs)
+void	ft_print_msg(char *msg)
 {
 	int	i;
 
 	i = 0;
-	while (strs[i])
+	while (msg[i])
 	{
-		free(strs[i]);
+		write (2, &msg[i], 1);
 		i++;
 	}
-	free(strs);
-	return (NULL);
+	exit(1);
+}
+
+void	msg_error(int num, char *msg)
+{
+	if (num == -1)
+		ft_print_msg(msg);
+	else if (num == -2)
+		ft_print_msg(msg);
 }

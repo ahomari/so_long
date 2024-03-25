@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_memset_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 14:48:38 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/19 13:39:45 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/24 13:28:08 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/25 02:22:37 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/so_long_bonus.h"
 
-void	*ft_free(char **strs)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int	i;
+	unsigned char	*ptr;
+	unsigned char	r;
 
-	i = 0;
-	while (strs[i])
+	ptr = (unsigned char *)b;
+	r = (unsigned char)c;
+	while (len--)
 	{
-		free(strs[i]);
-		i++;
+		*ptr++ = r;
 	}
-	free(strs);
-	return (NULL);
+	return (b);
 }

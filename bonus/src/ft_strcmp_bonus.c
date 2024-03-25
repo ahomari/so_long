@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 14:48:38 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/19 13:39:45 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/14 12:09:53 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/25 02:22:48 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/so_long_bonus.h"
 
-void	*ft_free(char **strs)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	int			i;
 
 	i = 0;
-	while (strs[i])
+	while ((s1[i] || s2[i]))
 	{
-		free(strs[i]);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
-	free(strs);
-	return (NULL);
+	return (0);
 }

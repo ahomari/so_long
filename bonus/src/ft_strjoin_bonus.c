@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 14:48:38 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/19 13:39:45 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/16 13:33:59 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/25 02:22:59 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/so_long_bonus.h"
 
-void	*ft_free(char **strs)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int	i;
+	char	*ptr;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (strs[i])
+	j = 0;
+	ptr = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
+	if (!ptr)
+		return (NULL);
+	while (s1[i])
 	{
-		free(strs[i]);
+		ptr[i] = s1[i];
 		i++;
 	}
-	free(strs);
-	return (NULL);
+	while (s2[j])
+	{
+		ptr[i] = s2[j];
+		i++;
+		j++;
+	}
+	return (ptr);
 }
+

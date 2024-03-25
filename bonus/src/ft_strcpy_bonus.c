@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_strcpy_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/17 14:48:38 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/19 13:39:45 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/13 23:14:16 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/25 02:22:52 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/so_long_bonus.h"
 
-void	*ft_free(char **strs)
+char	*ft_strcpy(char *dst, char const *src, size_t len)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (strs[i])
+	while (src[i] && i < len)
 	{
-		free(strs[i]);
+		dst[i] = src[i];
 		i++;
 	}
-	free(strs);
-	return (NULL);
+	dst[i] = '\0';
+	return (dst);
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 13:50:29 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/24 17:19:22 by ahomari          ###   ########.fr       */
+/*   Created: 2024/03/24 17:32:50 by ahomari           #+#    #+#             */
+/*   Updated: 2024/03/25 02:26:59 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE  10
@@ -23,7 +23,6 @@
 # include <stdarg.h>
 # include <fcntl.h>
 # include <mlx.h>
-# include <libc.h>
 
 typedef struct s_list
 {
@@ -87,4 +86,5 @@ int		echap_exit(t_list *data);
 void	valid_map1(char **ptr, int count_line, int	count_C, int count_E, int count_P);
 void	destroy_img(t_list *data);
 void	ft_cleanup(t_list *data);
+
 #endif
