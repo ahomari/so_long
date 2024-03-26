@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:32:50 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/25 02:26:59 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/25 15:44:15 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@
 
 typedef struct s_list
 {
+	int		count_C;
+	int		count_E;
+	int		count_P;
+	int		count_I;
 	int		img_width;
 	int		img_height;
-	int		count_C;
 	int		x;
 	int		y;
 	int		line_count;
@@ -64,7 +67,7 @@ int		ft_strlen(char *s);
 void	*ft_calloc(size_t count, size_t size);
 void	msg_error(int num, char *msg);
 int		ft_strcmp(const char *s1, const char *s2);
-void	flood_fill(char **ptr, int pos_x, int pos_y, int *C_count, int *E_count);
+void	flood_fill(char **ptr, int pos_x, int pos_y, t_list *data);
 int		check_map(char *str, char c);
 void	position_player(char **ptr, int *x, int *y);
 char	*ft_strjoin(char *s1, char *s2);
@@ -83,7 +86,7 @@ void	finish_game(t_list *data);
 int		check_map1(char c1, char c2);
 void	get_img(t_list *data);
 int		echap_exit(t_list *data);
-void	valid_map1(char **ptr, int count_line, int	count_C, int count_E, int count_P);
+void	valid_map1(char **ptr, t_list *data);
 void	destroy_img(t_list *data);
 void	ft_cleanup(t_list *data);
 

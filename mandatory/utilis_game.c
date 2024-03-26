@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:02:54 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/24 16:00:33 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/25 23:15:55 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	sub_reload(t_list *data, char c, int i, int j)
 		else
 			mlx_put_image_to_window(data->mlx, data->mlx_win, data->door_close, j * 50, i * 50);
 	}
+
+	
 }
 
 void	reload_map(t_list *data, char c)
@@ -108,6 +110,7 @@ void	reload_map(t_list *data, char c)
 	}
 	mlx_hook(data->mlx_win, 2, 0, key_hook, data);
 	mlx_hook(data->mlx_win, 17, 0, echap_exit, data);
+	mlx_loop_hook();
 }
 
 void	get_img(t_list *data)

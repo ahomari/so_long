@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 11:56:07 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/25 02:23:38 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/25 15:30:30 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ int check_map1(char c1, char c2)
 	return (0);
 }
 
-void	valid_map1(char **ptr, int count_line, int	count_C, int count_E, int count_P)
+void	valid_map1(char **ptr, t_list *data)
 {
 	int i;
 	int len;
 	
 	i = 1;
 	len = ft_strlen(ptr[0]);
-	while (ptr[i] && i < count_line -1)
+	while (ptr[i] && i < data->line_count -1)
 	{
 		if (check_map1(ptr[i][0], ptr[i][len - 1]) == 1)
 			msg_error(-2, "Invalid Map2 !!");
@@ -77,9 +77,9 @@ void	valid_map1(char **ptr, int count_line, int	count_C, int count_E, int count_
 			msg_error(-2, "Invalid Map !!");
 		i++;
 	}
-	if (check_map(ptr[0], '1') == 1 || check_map(ptr[count_line - 1], '1') == 1 || ptr[count_line - 1][len] == '\n'
-		|| count_C == 0 || count_E != 1 || count_P != 1 
-			|| len != ft_strlen(ptr[count_line - 1]))
+	if (check_map(ptr[0], '1') == 1 || check_map(ptr[data->line_count - 1], '1') == 1 || ptr[data->line_count - 1][len] == '\n'
+		|| data->count_C == 0 || data->count_E != 1 || data->count_P != 1 
+			|| len != ft_strlen(ptr[data->line_count - 1]))
 		msg_error(-2, "Invalid Map3 !!");
 }
 

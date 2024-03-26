@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:32:30 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/25 02:23:29 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/25 16:58:07 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,18 @@ void	open_window(t_list *data, char *file)
 void	parsing(t_list *data, char *file)
 {
 	char	**ptr;
-	int		count_C;
-	int		count_E;
-	int		count_P;
 	
 	ptr = read_map(data, file);
 	if (!ptr)
 		msg_error(-2, "Error !!");
-	count_C = count_CEP(ptr, 'C');
-	count_E = count_CEP(ptr, 'E');
-	count_P = count_CEP(ptr, 'P');
-	data->count_C = count_C;
-	valid_map1(ptr, data->line_count, count_C, count_E, count_P);
+	data->count_C = count_CEP(ptr, 'C');
+	data->count_E = count_CEP(ptr, 'E');
+	data->count_P = count_CEP(ptr, 'P');
+	data->count_I = count_CEP(ptr, 'I');
+	valid_map1(ptr, data);
 	position_player(ptr, &data->x, &data->y);
-	flood_fill(ptr, data->x, data->y, &count_C, &count_E);
-	if (count_C != 0 || count_E != 0)
+	flood_fill(ptr, data->x, data->y, data);
+	if (data->count_C != 0 || data->count_E != 0 || data->count_I != 0)
 		msg_error(-2, "Invalid Map4 !!");
 	ft_free(ptr);
 	open_window(data, file);
