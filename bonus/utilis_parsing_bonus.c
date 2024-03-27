@@ -21,11 +21,11 @@ char  	**read_map(t_list *data, char *file)
 	
 	data->line_count = 0;
 	fd = open(file, O_RDONLY);
-		msg_error(fd, "Failed Open !!\n");
+		msg_error(fd, "Failed Open !!\n", data);
 	str = ft_strdup("");
 	read = get_next_line(fd);
 	if (!read)
-		msg_error(-2, "Invalid Map\n");
+		msg_error(-1, "Invalid Map\n", data);
 	while (read)
 	{
 		data->line_count++;
@@ -71,15 +71,13 @@ void	valid_map1(char **ptr, t_list *data)
 	len = ft_strlen(ptr[0]);
 	while (ptr[i] && i < data->line_count -1)
 	{
-		if (check_map1(ptr[i][0], ptr[i][len - 1]) == 1)
-			msg_error(-2, "Invalid Map2 !!");
-		if (len != ft_strlen(ptr[i]))
-			msg_error(-2, "Invalid Map !!");
+		if (check_map1(ptr[i][0], ptr[i][len - 1]) == 1 || len != ft_strlen(ptr[i]))
+			msg_error(-1, "Invalid Map !!\n", data);
 		i++;
 	}
 	if (check_map(ptr[0], '1') == 1 || check_map(ptr[data->line_count - 1], '1') == 1 || ptr[data->line_count - 1][len] == '\n'
 		|| data->count_C == 0 || data->count_E != 1 || data->count_P != 1 
 			|| len != ft_strlen(ptr[data->line_count - 1]))
-		msg_error(-2, "Invalid Map3 !!");
+		msg_error(-1, "Invalid Map !!\n", data);
 }
 

@@ -37,7 +37,7 @@ int	echap_exit(t_list *data)
 void	ft_cleanup(t_list *data)
 {
 	ft_free(data->map);
-	free(data);
 	destroy_img(data);
+	free(data);
 	exit(0);
 }

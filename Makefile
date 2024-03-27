@@ -7,7 +7,8 @@ HEAD					= include/so_long.h
 HEAD_BONUS				= include/so_long_bonus.h 
 
 SRC_FUNC_B				= bonus/ft_printf/ft_printf_bonus.c bonus/ft_printf/utils_bonus.c bonus/gnl/ft_strjoinn_bonus.c bonus/gnl/get_next_line_bonus.c bonus/src/flood_fill_bonus.c bonus/src/ft_calloc_bonus.c bonus/src/ft_free_bonus.c bonus/src/ft_memset_bonus.c \
-							bonus/src/ft_split_bonus.c bonus/src/ft_strchr_bonus.c bonus/src/ft_strcmp_bonus.c bonus/src/ft_strcpy_bonus.c bonus/src/ft_strdup_bonus.c bonus/src/ft_strjoin_bonus.c bonus/src/ft_strlen_bonus.c bonus/src/ft_substr_bonus.c bonus/src/msg_error_bonus.c
+							bonus/src/ft_split_bonus.c bonus/src/ft_strchr_bonus.c bonus/src/ft_strcmp_bonus.c bonus/src/ft_strcpy_bonus.c bonus/src/ft_strdup_bonus.c bonus/src/ft_strjoin_bonus.c bonus/src/ft_strlen_bonus.c bonus/src/ft_substr_bonus.c bonus/src/msg_error_bonus.c \
+							bonus/src/ft_itoi_bonus.c
 F_BONUS_OBJ				= ${SRC_FUNC_B:.c=.o} 
 
 SRC_FUNC				= mandatory/ft_printf/ft_printf.c mandatory/ft_printf/utils.c mandatory/gnl/ft_strjoinn.c mandatory/gnl/get_next_line.c mandatory/src/ft_strchr.c mandatory/src/ft_strcpy.c mandatory/src/ft_strdup.c mandatory/src/ft_strlen.c \
@@ -25,15 +26,15 @@ S_OBJ					= ${SRC_MAN:.c=.o}
 						${CC} ${FLAGS} -c $< -o $@
 
 %.o: %.c				${HEAD}
-						${CC} ${FLAGS} -Imlx -c $< -o $@
+						${CC} ${FLAGS} -c $< -o $@
 
 
 ${NAME}:				${F_OBJ} ${S_OBJ} include/so_long.h
-						@${CC} ${F_OBJ} ${S_OBJ} -lmlx -framework OpenGL -framework AppKit -o ${NAME}
+						@${CC} lib/libmlx.a ${F_OBJ} ${S_OBJ} -framework OpenGL -framework AppKit -o ${NAME}
 						@echo "${GREEN}${NAME} Created!${DEFAULT}"
 
 bonus  :				${F_BONUS_OBJ} ${S_BONUS_OBJ} include/so_long_bonus.h
-						@${CC} ${F_BONUS_OBJ} ${S_BONUS_OBJ} -lmlx -framework OpenGL -framework AppKit -o ${NAME_BONUS}
+						@${CC} lib/libmlx.a ${F_BONUS_OBJ} ${S_BONUS_OBJ} -framework OpenGL -framework AppKit -o ${NAME_BONUS} -g -fsanitize=address
 						@echo "${GREEN}${NAME_BONUS} Created!${DEFAULT}"
 
 all:					${NAME}

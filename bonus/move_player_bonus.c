@@ -12,88 +12,106 @@
 
 #include "../include/so_long_bonus.h"
 
-void	finish_game(t_list *data)
+void	finish_game(t_list *data, char c)
 {
 	data->count_move += 1;
 	ft_printf("You Moved %d Times\n", data->count_move);
-	ft_printf("You Win\n");
-	ft_cleanup(data);
+	if (c == 'E')
+	{
+		ft_printf("You Win\n");
+		ft_cleanup(data);
+		exit(0);
+	}
+	else if (c == 'B')
+		msg_error(-2, "Lost !!\n", data);
 }
 
 void	move_up(t_list *data)
 {
-	if (data->map[data->y - 1][data->x] == '0' || data->map[data->y - 1][data->x] == 'C')
+	if (data->map[data->y - 1][data->x] != '1')
 	{
-		data->count_move += 1;
-		if (data->map[data->y - 1][data->x] == 'C')
-			data->count_C--;
-		data->map[data->y][data->x] = '0';
-		data->y -= 1;
-		data->map[data->y][data->x] = 'P';
-		ft_printf("You Moved %d Times\n", data->count_move);
-		mlx_string_put();
-		reload_map(data, 't');
+		if (data->map[data->y - 1][data->x] == 'E' && data->count_C == 0)
+			finish_game(data, 'E');
+		else if (data->map[data->y - 1][data->x] == 'B')
+			finish_game(data, 'B');
+		else if (data->map[data->y - 1][data->x] == '0' || data->map[data->y - 1][data->x] == 'C')
+		{
+			data->count_move += 1;
+			if (data->map[data->y - 1][data->x] == 'C')
+				data->count_C--;
+			data->map[data->y][data->x] = '0';
+			data->y -= 1;
+			data->map[data->y][data->x] = 'P';
+		}
 	}
-	else if (data->map[data->y - 1][data->x] == 'E' && data->count_C == 0)
-		finish_game(data);
-	else
-		reload_map(data, 't');
+	data->nbr_move = ft_itoa(data->count_move);
+	data->direction = 'u';
 }
 
 void	move_down(t_list *data)
 {
-	if (data->map[data->y + 1][data->x] == '0' || data->map[data->y + 1][data->x] == 'C')
+	if (data->map[data->y + 1][data->x] != '1')
 	{
-		data->count_move += 1;
-		if (data->map[data->y + 1][data->x] == 'C')
-			data->count_C--;
-		data->map[data->y][data->x] = '0';
-		data->y += 1;
-		data->map[data->y][data->x] = 'P';
-		ft_printf("You Moved %d Times\n", data->count_move);
-		reload_map(data, 'd');
+		if (data->map[data->y + 1][data->x] == 'E' && data->count_C == 0)
+			finish_game(data, 'E');
+		else if (data->map[data->y + 1][data->x] == 'B')
+			finish_game(data, 'B');
+		else if (data->map[data->y + 1][data->x] == '0' || data->map[data->y + 1][data->x] == 'C')
+		{
+			data->count_move += 1;
+			if (data->map[data->y + 1][data->x] == 'C')
+				data->count_C--;
+			data->map[data->y][data->x] = '0';
+			data->y += 1;
+			data->map[data->y][data->x] = 'P';
+
+			ft_printf("You Moved %d Times\n", data->count_move);
+		}
 	}
-	else if (data->map[data->y + 1][data->x] == 'E' && data->count_C == 0)
-		finish_game(data);
-	else
-		reload_map(data, 'd');
+	data->direction = 'd';
 }
 
 void	move_right(t_list *data)
 {
-	if (data->map[data->y][data->x + 1] == '0' || data->map[data->y][data->x + 1] == 'C')
+	if (data->map[data->y][data->x + 1] != '1')
 	{
-		data->count_move += 1;
-		if (data->map[data->y][data->x + 1] == 'C')
-			data->count_C--;
-		data->map[data->y][data->x] = '0';
-		data->x += 1;
-		data->map[data->y][data->x] = 'P';
-		ft_printf("You Moved %d Times\n", data->count_move);
-		reload_map(data, 'r');
+		if (data->map[data->y][data->x + 1] == 'E' && data->count_C == 0)
+			finish_game(data, 'E');
+		else if (data->map[data->y][data->x + 1] == 'B')
+			finish_game(data, 'B');
+		else if (data->map[data->y][data->x + 1] == '0' || data->map[data->y][data->x + 1] == 'C')
+		{
+			data->count_move += 1;
+			if (data->map[data->y][data->x + 1] == 'C')
+				data->count_C--;
+			data->map[data->y][data->x] = '0';
+			data->x += 1;
+			data->map[data->y][data->x] = 'P';
+			ft_printf("You Moved %d Times\n", data->count_move);
+		}
 	}
-	else if (data->map[data->y][data->x + 1] == 'E' && data->count_C == 0)
-		finish_game(data);
-	else
-		reload_map(data, 'r');
+	data->direction = 'r';
 }
 
 void	move_left(t_list *data)
 {
-	if (data->map[data->y][data->x - 1] == '0' || data->map[data->y][data->x - 1] == 'C')
+	if (data->map[data->y][data->x - 1] != '1')
 	{
-		data->count_move += 1;
-		if (data->map[data->y][data->x - 1] == 'C')
-			data->count_C--;
-		data->map[data->y][data->x] = '0';
-		data->x -= 1;
-		data->map[data->y][data->x] = 'P';
-		ft_printf("You Moved %d Times\n", data->count_move);
-		reload_map(data, 'l');
+		if (data->map[data->y][data->x - 1] == 'E' && data->count_C == 0)
+			finish_game(data, 'E');
+		else if (data->map[data->y][data->x - 1] == 'B')
+			finish_game(data, 'B');
+		else if (data->map[data->y][data->x - 1] == '0' || data->map[data->y][data->x - 1] == 'C')
+		{
+			data->count_move += 1;
+			if (data->map[data->y][data->x - 1] == 'C')
+				data->count_C--;
+			data->map[data->y][data->x] = '0';
+			data->x -= 1;
+			data->map[data->y][data->x] = 'P';
+			ft_printf("You Moved %d Times\n", data->count_move);
+		}
 	}
-	else if (data->map[data->y][data->x - 1] == 'E' && data->count_C == 0)
-		finish_game(data);
-	else
-		reload_map(data, 'l');
+	data->direction = 'l';
 }
 

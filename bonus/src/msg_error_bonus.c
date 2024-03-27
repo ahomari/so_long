@@ -25,10 +25,13 @@ void	ft_print_msg(char *msg)
 	exit(1);
 }
 
-void	msg_error(int num, char *msg)
+void	msg_error(int num, char *msg, t_list *data)
 {
 	if (num == -1)
 		ft_print_msg(msg);
 	else if (num == -2)
+	{
+		ft_cleanup(data);
 		ft_print_msg(msg);
+	}
 }

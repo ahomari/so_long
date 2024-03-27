@@ -27,7 +27,7 @@ void	flood_fill(char **ptr, int pos_x, int pos_y, t_list *data)
 		ptr[pos_y][pos_x] = '1';
 		data->count_E -= 1;
 	}
-	else if (ptr[pos_y][pos_x] == 'I')
+	else if (ptr[pos_y][pos_x] == 'B')
 	{
 		ptr[pos_y][pos_x] = '1';
 		data->count_I -= 1;

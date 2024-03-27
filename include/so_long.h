@@ -22,7 +22,7 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <fcntl.h>
-# include <mlx.h>
+# include "mlx.h"
 # include <libc.h>
 
 typedef struct s_list

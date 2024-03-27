@@ -110,7 +110,7 @@ void	reload_map(t_list *data, char c)
 	}
 	mlx_hook(data->mlx_win, 2, 0, key_hook, data);
 	mlx_hook(data->mlx_win, 17, 0, echap_exit, data);
-	mlx_loop_hook();
+	// mlx_loop_hook();
 }
 
 void	get_img(t_list *data)
