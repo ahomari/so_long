@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 01:49:05 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/24 16:06:49 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/28 12:36:59 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@ int	key_hook(int keycode, t_list *data)
 {
 	if (keycode == 126 || keycode == 13)
 		move_up(data);
-	if (keycode == 125 || keycode == 1)
+	else if (keycode == 125 || keycode == 1)
 		move_down(data);
-	if (keycode == 124 || keycode == 2)
+	else if (keycode == 124 || keycode == 2)
 		move_right(data);
-	if (keycode == 123 || keycode == 0)
+	else if (keycode == 123 || keycode == 0)
 		move_left(data);
-	if (keycode == 53)
+	else if (keycode == 53)
 		echap_exit(data);
+	reload_map(data);
 	return (0);
 }
 

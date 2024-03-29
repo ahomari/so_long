@@ -6,12 +6,11 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:56:41 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/25 02:22:25 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/29 00:18:44 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long_bonus.h"
-
 
 static char	*read_fun(int fd, char *tmp)
 {

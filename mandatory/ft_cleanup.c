@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:24:33 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/25 12:12:03 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/29 03:12:05 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ void	destroy_img(t_list *data)
 	mlx_destroy_window(data->mlx, data->mlx_win);
 }
 
-int	echap_exit(t_list *data)
-{
-	ft_printf("close!!\n");
-	destroy_img(data);
-	exit (0);
-}
-
 void	ft_cleanup(t_list *data)
 {
+	ft_free(data->ptr);
 	ft_free(data->map);
 	destroy_img(data);
 	free(data);
-	exit(0);
+}
+
+int	echap_exit(t_list *data)
+{
+	ft_printf("close\n");
+	ft_cleanup(data);
+	exit (0);
 }

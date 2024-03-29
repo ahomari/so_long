@@ -6,12 +6,11 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 14:38:32 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/25 02:21:57 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/29 00:18:12 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long_bonus.h"
-
 
 static void	ft_format(va_list ap, int *count, const char format)
 {

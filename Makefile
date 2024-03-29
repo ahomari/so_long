@@ -16,25 +16,25 @@ SRC_FUNC				= mandatory/ft_printf/ft_printf.c mandatory/ft_printf/utils.c mandat
 							mandatory/src/ft_memset.c
 F_OBJ					= ${SRC_FUNC:.c=.o}
 
-SRC_BUNUS				= bonus/ft_cleanup_bonus.c bonus/key_hook_bonus.c bonus/main_bonus.c bonus/move_player_bonus.c bonus/utilis_game_bonus.c bonus/utilis_parsing_bonus.c
+SRC_BUNUS				= bonus/ft_cleanup_bonus.c bonus/key_hook_bonus.c bonus/main_bonus.c bonus/move_player_bonus.c bonus/utilis_game_bonus.c bonus/utilis_parsing_bonus.c bonus/move_enemy_bonus.c bonus/reload_map_bonus.c
 S_BONUS_OBJ				= ${SRC_BUNUS:.c=.o}
 
-SRC_MAN					= mandatory/main.c  mandatory/key_hook.c mandatory/move_player.c mandatory/utilis_game.c mandatory/utilis_parsing.c mandatory/ft_cleanup.c
+SRC_MAN					= mandatory/main.c  mandatory/key_hook.c mandatory/move_player.c mandatory/utilis_game.c mandatory/utilis_parsing.c mandatory/ft_cleanup.c mandatory/reload_map.c
 S_OBJ					= ${SRC_MAN:.c=.o}
 
 %bonus.o: %bonus.c		${HEAD_BONUS}
-						${CC} ${FLAGS} -c $< -o $@
+						${CC} ${FLAGS} -Imlx -c $< -o $@
 
 %.o: %.c				${HEAD}
-						${CC} ${FLAGS} -c $< -o $@
+						${CC} ${FLAGS} -Imlx -c $< -o $@
 
 
 ${NAME}:				${F_OBJ} ${S_OBJ} include/so_long.h
-						@${CC} lib/libmlx.a ${F_OBJ} ${S_OBJ} -framework OpenGL -framework AppKit -o ${NAME}
+						@${CC} ${F_OBJ} ${S_OBJ} -lmlx -framework OpenGL -framework AppKit -o ${NAME}
 						@echo "${GREEN}${NAME} Created!${DEFAULT}"
 
 bonus  :				${F_BONUS_OBJ} ${S_BONUS_OBJ} include/so_long_bonus.h
-						@${CC} lib/libmlx.a ${F_BONUS_OBJ} ${S_BONUS_OBJ} -framework OpenGL -framework AppKit -o ${NAME_BONUS} -g -fsanitize=address
+						@${CC} ${F_BONUS_OBJ} ${S_BONUS_OBJ} -lmlx -framework OpenGL -framework AppKit -o ${NAME_BONUS} -g
 						@echo "${GREEN}${NAME_BONUS} Created!${DEFAULT}"
 
 all:					${NAME}

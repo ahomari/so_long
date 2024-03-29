@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:23:21 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/25 02:23:10 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/29 03:00:59 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,16 @@ void	ft_print_msg(char *msg)
 void	msg_error(int num, char *msg, t_list *data)
 {
 	if (num == -1)
+	{
+		if (!data->str)
+			free(data->str);
+		if (!data->ptr)
+			ft_free(data->ptr);
+		if (!data->map)
+			ft_free(data->map);
+		free(data);
 		ft_print_msg(msg);
+	}
 	else if (num == -2)
 	{
 		ft_cleanup(data);

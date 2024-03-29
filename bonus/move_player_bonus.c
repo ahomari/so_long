@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 02:41:13 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/25 02:42:33 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/29 03:14:40 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	finish_game(t_list *data, char c)
 {
 	data->count_move += 1;
-	ft_printf("You Moved %d Times\n", data->count_move);
+	reload_map(data);
 	if (c == 'E')
 	{
 		ft_printf("You Win\n");
@@ -23,28 +23,28 @@ void	finish_game(t_list *data, char c)
 		exit(0);
 	}
 	else if (c == 'B')
-		msg_error(-2, "Lost !!\n", data);
+		msg_error(-2, "You Lost\n", data);
 }
 
 void	move_up(t_list *data)
 {
 	if (data->map[data->y - 1][data->x] != '1')
 	{
-		if (data->map[data->y - 1][data->x] == 'E' && data->count_C == 0)
+		if (data->map[data->y - 1][data->x] == 'E' && data->count_c == 0)
 			finish_game(data, 'E');
 		else if (data->map[data->y - 1][data->x] == 'B')
 			finish_game(data, 'B');
-		else if (data->map[data->y - 1][data->x] == '0' || data->map[data->y - 1][data->x] == 'C')
+		else if (data->map[data->y - 1][data->x] == '0'
+			|| data->map[data->y - 1][data->x] == 'C')
 		{
 			data->count_move += 1;
 			if (data->map[data->y - 1][data->x] == 'C')
-				data->count_C--;
+				data->count_c--;
 			data->map[data->y][data->x] = '0';
 			data->y -= 1;
 			data->map[data->y][data->x] = 'P';
 		}
 	}
-	data->nbr_move = ft_itoa(data->count_move);
 	data->direction = 'u';
 }
 
@@ -52,20 +52,19 @@ void	move_down(t_list *data)
 {
 	if (data->map[data->y + 1][data->x] != '1')
 	{
-		if (data->map[data->y + 1][data->x] == 'E' && data->count_C == 0)
+		if (data->map[data->y + 1][data->x] == 'E' && data->count_c == 0)
 			finish_game(data, 'E');
 		else if (data->map[data->y + 1][data->x] == 'B')
 			finish_game(data, 'B');
-		else if (data->map[data->y + 1][data->x] == '0' || data->map[data->y + 1][data->x] == 'C')
+		else if (data->map[data->y + 1][data->x] == '0'
+			|| data->map[data->y + 1][data->x] == 'C')
 		{
 			data->count_move += 1;
 			if (data->map[data->y + 1][data->x] == 'C')
-				data->count_C--;
+				data->count_c--;
 			data->map[data->y][data->x] = '0';
 			data->y += 1;
 			data->map[data->y][data->x] = 'P';
-
-			ft_printf("You Moved %d Times\n", data->count_move);
 		}
 	}
 	data->direction = 'd';
@@ -75,19 +74,19 @@ void	move_right(t_list *data)
 {
 	if (data->map[data->y][data->x + 1] != '1')
 	{
-		if (data->map[data->y][data->x + 1] == 'E' && data->count_C == 0)
+		if (data->map[data->y][data->x + 1] == 'E' && data->count_c == 0)
 			finish_game(data, 'E');
 		else if (data->map[data->y][data->x + 1] == 'B')
 			finish_game(data, 'B');
-		else if (data->map[data->y][data->x + 1] == '0' || data->map[data->y][data->x + 1] == 'C')
+		else if (data->map[data->y][data->x + 1] == '0'
+			|| data->map[data->y][data->x + 1] == 'C')
 		{
 			data->count_move += 1;
 			if (data->map[data->y][data->x + 1] == 'C')
-				data->count_C--;
+				data->count_c--;
 			data->map[data->y][data->x] = '0';
 			data->x += 1;
 			data->map[data->y][data->x] = 'P';
-			ft_printf("You Moved %d Times\n", data->count_move);
 		}
 	}
 	data->direction = 'r';
@@ -97,21 +96,20 @@ void	move_left(t_list *data)
 {
 	if (data->map[data->y][data->x - 1] != '1')
 	{
-		if (data->map[data->y][data->x - 1] == 'E' && data->count_C == 0)
+		if (data->map[data->y][data->x - 1] == 'E' && data->count_c == 0)
 			finish_game(data, 'E');
 		else if (data->map[data->y][data->x - 1] == 'B')
 			finish_game(data, 'B');
-		else if (data->map[data->y][data->x - 1] == '0' || data->map[data->y][data->x - 1] == 'C')
+		else if (data->map[data->y][data->x - 1] == '0'
+			|| data->map[data->y][data->x - 1] == 'C')
 		{
 			data->count_move += 1;
 			if (data->map[data->y][data->x - 1] == 'C')
-				data->count_C--;
+				data->count_c--;
 			data->map[data->y][data->x] = '0';
 			data->x -= 1;
 			data->map[data->y][data->x] = 'P';
-			ft_printf("You Moved %d Times\n", data->count_move);
 		}
 	}
 	data->direction = 'l';
 }
-

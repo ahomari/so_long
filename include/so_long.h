@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:50:29 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/24 17:19:22 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/29 02:06:29 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,21 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <fcntl.h>
-# include "mlx.h"
-# include <libc.h>
+# include <mlx.h>
 
 typedef struct s_list
 {
 	int		img_width;
 	int		img_height;
-	int		count_C;
+	int		count_c;
+	int		count_e;
+	int		count_p;
 	int		x;
 	int		y;
 	int		line_count;
 	int		count_move;
+	char	direction;
+	char	**ptr;
 	char	**map;
 	void	*floor;
 	void	*door_open;
@@ -49,8 +52,6 @@ typedef struct s_list
 	void	*player_down;
 }					t_list;
 
-
-
 char	*ft_strjoinn(char *s1, char *s2);
 char	*get_next_line(int fd);
 int		ft_printf(const char *format, ...);
@@ -63,19 +64,19 @@ char	*ft_strcpy(char *dst, char const *src, size_t len);
 char	*ft_strdup(char *s1);
 int		ft_strlen(char *s);
 void	*ft_calloc(size_t count, size_t size);
-void	msg_error(int num, char *msg);
+void	msg_error(int num, char *msg, t_list *data);
 int		ft_strcmp(const char *s1, const char *s2);
-void	flood_fill(char **ptr, int pos_x, int pos_y, int *C_count, int *E_count);
+void	flood_fill(t_list *data, int pos_x, int pos_y);
 int		check_map(char *str, char c);
-void	position_player(char **ptr, int *x, int *y);
+void	position_player(t_list *data);
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *s, char c);
 char	*ft_substr(char *s, int start, int len);
 void	*ft_free(char **strs);
-int		count_CEP(char **ptr, char c);
-char  	**read_map(t_list *data, char *file);
+int		count_elm(char **ptr, char c);
+char	**read_map(t_list *data, char *file);
 int		key_hook(int keycode, t_list *data);
-void	reload_map(t_list *data, char c);
+void	reload_map(t_list *data);
 void	move_left(t_list *data);
 void	move_right(t_list *data);
 void	move_down(t_list *data);
@@ -84,7 +85,7 @@ void	finish_game(t_list *data);
 int		check_map1(char c1, char c2);
 void	get_img(t_list *data);
 int		echap_exit(t_list *data);
-void	valid_map1(char **ptr, int count_line, int	count_C, int count_E, int count_P);
+void	valid_map1(t_list *data);
 void	destroy_img(t_list *data);
 void	ft_cleanup(t_list *data);
 #endif
