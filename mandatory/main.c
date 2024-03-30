@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 14:32:30 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/29 03:18:01 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/30 01:30:16 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ int	return_size(char **env)
 
 void	open_window(t_list *data, char *file)
 {
+	data->str = ft_strdup("");
 	data->map = read_map(data, file);
 	if (!data->map)
 		msg_error(-1, "Error\ndata->map = NUUL\n", data);
+	free(data->str);
+	data->str = NULL;
 	data->count_c = count_elm(data->map, 'C');
 	data->count_e = count_elm(data->map, 'E');
 	data->count_p = count_elm(data->map, 'P');
@@ -42,9 +45,12 @@ void	open_window(t_list *data, char *file)
 
 void	parsing(t_list *data, char *file)
 {
+	data->str = ft_strdup("");
 	data->ptr = read_map(data, file);
 	if (!data->ptr)
 		msg_error(-1, "Error\ndata->ptr = NULL\n", data);
+	free(data->str);
+	data->str = NULL;
 	data->count_c = count_elm(data->ptr, 'C');
 	data->count_e = count_elm(data->ptr, 'E');
 	data->count_p = count_elm(data->ptr, 'P');
@@ -58,16 +64,19 @@ void	parsing(t_list *data, char *file)
 	open_window(data, file);
 }
 
-void	f(){system("leaks so_long");}
-
 int	main(int ac, char **av)
 {
 	t_list	*data;
-	atexit(f);
+
 	data = malloc(sizeof(t_list));
+	if (!data)
+		msg_error(-3, "Error\n", data);
 	ft_memset(data, 0, sizeof(t_list));
 	if (ac != 2)
 		msg_error(-1, "Invalid Number of Argument!!\n", data);
+	data->len_file = ft_strlen(av[1]) - 4;
+	if (ft_strcmp(av[1] + data->len_file, ".ber") != 0)
+		msg_error(-1, "Error\nInvalid Map\n", data);
 	parsing(data, av[1]);
 	mlx_loop(data->mlx);
 }

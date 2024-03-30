@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:32:50 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/29 02:44:45 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/30 01:38:25 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_list
 	int		y_enemy;
 	int		line_count;
 	int		count_move;
+	int		len_file;
 	char	direction;
 	char	**ptr;
 	char	**map;
@@ -105,6 +106,6 @@ void	enemy_move_right(t_list *data);
 void	enemy_move_left(t_list *data);
 void	move_enemy(t_list *data);
 int		animation(t_list *data);
-void	sub_reload(t_list *data, int i, int j);
 void	position_enemy(t_list *data);
+int		ft_check_newline(char *str);
 #endif

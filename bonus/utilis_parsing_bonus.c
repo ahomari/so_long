@@ -6,38 +6,25 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 11:56:07 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/29 03:02:23 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/30 01:27:12 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long_bonus.h"
 
-char	**read_map(t_list *data, char *file)
+int	ft_check_newline(char *str)
 {
-	int		fd;
-	char	*tmp;
-	char	*read;
+	int	i;
 
-	data->line_count = 0;
-	fd = open(file, O_RDONLY);
-	msg_error(fd, "Error\nFailed Open fd\n", data);
-	data->str = ft_strdup("");
-	read = get_next_line(fd);
-	if (!read)
-		msg_error(-1, "Error\nFailed Read\n", data);
-	while (read)
+	i = 0;
+	while (str[i])
 	{
-		data->line_count++;
-		tmp = data->str;
-		data->str = ft_strjoin(tmp, read);
-		free(tmp);
-		free(read);
-		read = get_next_line(fd);
-		if (!read || read[0] == '\n')
-			break ;
+		if ((str[i] == '\n' && str[i + 1] == '\n')
+			|| (str[i] == '\n' && !str[i + 1]))
+			return (1);
+		i++;
 	}
-	close(fd);
-	return (ft_split(data->str, '\n'));
+	return (0);
 }
 
 int	check_map(char *str, char c)
@@ -95,14 +82,13 @@ void	valid_map1(t_list *data)
 	{
 		if (check_map1(data->ptr[i][0], data->ptr[i][len - 1]) == 1
 			|| len != ft_strlen(data->ptr[i]))
-			msg_error(-1, "Error\nInvalid Map\n", data);
+			msg_error(-1, "Error\nInvalid Map44\n", data);
 		i++;
 	}
 	if (check_map2(data->ptr, "01CPEB") != 0)
-		msg_error(-1, "Error\nInvalid Map\n", data);
-	if (check_map(data->ptr[data->line_count - 1], '1') == 1
-		|| check_map(data->ptr[0], '1') == 1
-		|| data->ptr[data->line_count - 1][len] == '\n'
+		msg_error(-1, "Error\nInvalid Map55\n", data);
+	if (check_map(data->ptr[0], '1') == 1
+		|| check_map(data->ptr[data->line_count - 1], '1') == 1
 		|| len != ft_strlen(data->ptr[data->line_count - 1]))
-		msg_error(-1, "Error\nInvalid Map\n", data);
+		msg_error(-1, "Error\nInvalid Map66\n", data);
 }

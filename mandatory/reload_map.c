@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 02:01:49 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/29 02:30:14 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/29 22:49:15 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ void	reload_map(t_list *data)
 			reload_map1(data, i, j);
 		}
 	}
-	ft_printf("You Moved %d Times\n", data->count_move);
+	if (data->count_move != data->old_count_move)
+		ft_printf("You Moved %d Times\n", data->count_move);
+	data->old_count_move = data->count_move;
 }

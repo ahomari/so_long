@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:41:13 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/29 03:03:19 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/29 23:50:15 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,5 @@ char	**ft_split(char *s, char c)
 	if (!ptr)
 		return (NULL);
 	ptr = ft_print(ptr, s, c);
-	free(s);
 	return (ptr);
 }

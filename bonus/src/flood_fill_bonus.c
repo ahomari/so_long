@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 02:45:26 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/29 00:24:45 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/29 23:52:33 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	flood_fill(t_list *data, int pos_x, int pos_y)
 	{
 		data->ptr[pos_y][pos_x] = '1';
 		data->count_e -= 1;
+		return ;
 	}
 	else
 		return ;

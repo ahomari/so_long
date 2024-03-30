@@ -16,10 +16,10 @@ SRC_FUNC				= mandatory/ft_printf/ft_printf.c mandatory/ft_printf/utils.c mandat
 							mandatory/src/ft_memset.c
 F_OBJ					= ${SRC_FUNC:.c=.o}
 
-SRC_BUNUS				= bonus/ft_cleanup_bonus.c bonus/key_hook_bonus.c bonus/main_bonus.c bonus/move_player_bonus.c bonus/utilis_game_bonus.c bonus/utilis_parsing_bonus.c bonus/move_enemy_bonus.c bonus/reload_map_bonus.c
+SRC_BUNUS				= bonus/ft_cleanup_bonus.c bonus/key_hook_bonus.c bonus/main_bonus.c bonus/move_player_bonus.c bonus/utilis_game_bonus.c bonus/utilis_parsing_bonus.c bonus/move_enemy_bonus.c bonus/reload_map_bonus.c bonus/read_map_bonus.c
 S_BONUS_OBJ				= ${SRC_BUNUS:.c=.o}
 
-SRC_MAN					= mandatory/main.c  mandatory/key_hook.c mandatory/move_player.c mandatory/utilis_game.c mandatory/utilis_parsing.c mandatory/ft_cleanup.c mandatory/reload_map.c
+SRC_MAN					= mandatory/main.c  mandatory/key_hook.c mandatory/move_player.c mandatory/utilis_game.c mandatory/utilis_parsing.c mandatory/ft_cleanup.c mandatory/reload_map.c mandatory/read_map.c
 S_OBJ					= ${SRC_MAN:.c=.o}
 
 %bonus.o: %bonus.c		${HEAD_BONUS}

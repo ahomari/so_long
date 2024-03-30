@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:50:29 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/29 02:06:29 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/30 01:35:21 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ typedef struct s_list
 	int		y;
 	int		line_count;
 	int		count_move;
+	int		old_count_move;
+	int		len_file;
 	char	direction;
+	char	*str;
 	char	**ptr;
 	char	**map;
 	void	*floor;
@@ -88,4 +91,5 @@ int		echap_exit(t_list *data);
 void	valid_map1(t_list *data);
 void	destroy_img(t_list *data);
 void	ft_cleanup(t_list *data);
+int		ft_check_newline(char *str);
 #endif

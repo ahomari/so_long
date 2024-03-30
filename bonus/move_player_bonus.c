@@ -6,7 +6,7 @@
 /*   By: ahomari <ahomari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 02:41:13 by ahomari           #+#    #+#             */
-/*   Updated: 2024/03/29 03:14:40 by ahomari          ###   ########.fr       */
+/*   Updated: 2024/03/30 01:45:54 by ahomari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ void	finish_game(t_list *data, char c)
 	data->count_move += 1;
 	reload_map(data);
 	if (c == 'E')
-	{
 		ft_printf("You Win\n");
-		ft_cleanup(data);
-		exit(0);
-	}
 	else if (c == 'B')
-		msg_error(-2, "You Lost\n", data);
+		ft_printf("You Lost\n");
+	ft_cleanup(data);
+	exit(0);
 }
 
 void	move_up(t_list *data)
